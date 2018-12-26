@@ -48,6 +48,8 @@ In order to start an npm project, run `npm init` at the root of your project fol
 
 ## prettier
 
+![prettier banner](prettier-banner-dark.png)
+
 - Prettier is an opinionated code formatter that removes worries about the style of your code.
 - It will takes your code and reformat it based on predefined styles. Since you no longer has control of the style of your code, your code is always consistent, as is the code from the rest of your team.
 - To use prettier to format your code, run the following command `npx prettier --write script.js`. Prettier will format code of `script.js`. Try to modify `script.js` and make it look ugly and run `npx prettier --write script.js` again - prettier will make the code back to its format.
@@ -59,7 +61,7 @@ It can be painful to remember CLI commands to run for your project. npm allows y
 
 Let's configure npm scripts for the prettier formatting above:
 
-1. Install prettier in your project by running `npm install -D prettier`.
+1. Install prettier in your project by running `npm install -D prettier`. The `-D` flag implies prettier will be installed as `devDependencies`.
 1. Add the `format` script in your `package.json`:
    ```js
    {
@@ -73,7 +75,19 @@ Let's configure npm scripts for the prettier formatting above:
 
 Now you can invoke prettier by running `npm run format`.
 
+<hr >
+
 ## Do It: add and configure prettier in your project
 
 1. Install prettier and configure format script based on the instruction above.
 1. (Optional) Configure prettier plugin if you're using VS code.
+
+<hr >
+
+## ESLint
+
+![ESLint logo](eslint-logo.png)
+
+- ESLint is a linter that enforce some code styles that more to usage than to code styles, e.g. never use `with` or never has unused parameters in your function.
+- To use ESLint in your project:
+  1. run `npm install -D eslint`
