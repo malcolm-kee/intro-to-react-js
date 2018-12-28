@@ -12,8 +12,8 @@ In this section, we will discuss about webpack and the ecosystem around it.
 ![webpack logo](webpack-logo.png)
 
 - Modern JS applications usually involved hundreds, if not thousands of files/functions. It would be painful and error-prone if we just include `<script>` tags in our html file manually.
-- This may not seems obvious to us currently because currently we have only two components `App` and `Movie`. However, even with only two components, we need to bear in mind that `React` and `ReactDOM` are our dependencies and we need to ensure our code only run after they are loaded. Try to move our script tag above the `React` and `ReactDOM` script tags, and you realize our code no longer works because our code depends on them.
-- Now imagine you have 50+ components and more than 10 dependencies, and there are some inter-dependencies between those files, manually analyzing and rearranging your script tags would be very painful, if not impossible.
+- This may not seems obvious to us now because currently we have only two components `App` and `Movie`. However, even with only two components, we need to bear in mind that `React` and `ReactDOM` are our dependencies and we need to ensure our code only run after they are loaded. Try to move our script tag above the `React` and `ReactDOM` script tags, and you realize our code no longer works because React code has not loaded yet.
+- Now imagine you have 50+ components and more than 20 dependencies, and there are some inter-dependencies between those files, manually analyzing and rearranging your script tags would be very painful, if not impossible.
 - webpack is the tools that solves this problem. It allows us to use JS module system like [commonjs] (e.g. `const React = require('react')`) and [ECMAScript Module][ecma-module] (e.g. `import React from 'react'`) by parsing them and create a single bundled output file.
 - On top of that, webpack has been extended to handle all types of files that involved in a modern web application, e.g. css, images, html etc.
 
@@ -122,6 +122,68 @@ Note that webpack is much more powerful than I've described above. The following
 - [`webpack DevServer`][webpack-devserver]: create a development server that will serve your output files and auto-reload page whenever you edit your code
 - [`style-loader`][style-loader] and [`css-loader`][css-loader]: allow you to import `.css` file in your javascript file, which will be injected as `<script>` tag in html.
 
+## [Babel]
+
+![Babel logo](babel-logo.png)
+
+- In our current code, we use new JS feature/syntax like arrow-function, `const` and `class`. However, only modern browser recognize those JS syntax - it will cause parsing error in older browser like IE 11. You can confirm this by opening your `index.html` using IE.
+- Babel is the tool that allow us to write modern JS while maximizing backward compatibility.
+- Babel is a compiler that compile your modern JS code (usually called ES2015+, or ES6+) to the older JS code.
+- You can see Babel in action at [https://babeljs.io/repl](https://babeljs.io/repl).
+
+### Compiling code with Babel
+
+- Babel allows few usage options, e.g. as a CLI tool or plugin to other build system.
+- Since we are using webpack, we will use `babel-loader` to integrate babel into our project.
+- To include Babel as part of our webpack bundling process:
+
+  1. Install required packages:
+     ```bash
+     npm install -D @babel/core @babel/preset-env babel-loader
+     ```
+  1. Create a `.babelrc` file with the following content. This file tells Babel what transformation to perform.
+     ```json
+     {
+       "presets": ["@babel/preset-env"]
+     }
+     ```
+  1. Create a `.browserlistrc` file with the following content. This specifies what browser you supports. `@babel/preset-env` use this information to decide what syntax it needs to transform and what can be leave it as-is.
+     ```
+     > 1%
+     not ie <= 8
+     ```
+  1. Create a `webpack.config.js` file with the following content. This configuration tells webpack to run through all file ends with `.js` or `.jsx` extension through the `babel-loader`.
+     ```javascript
+     module.exports = {
+       module: {
+         rules: [
+           {
+             test: /\.(js|jsx)$/,
+             exclude: /node_modules/,
+             use: ['babel-loader']
+           }
+         ]
+       }
+     };
+     ```
+  1. Update your npm scripts in `package.json`:
+     ```javascript
+     ...
+     "build": "webpack --config webpack.config.js --mode=\"development\"",
+     "build:prod": "webpack --config webpack.config.js --mode=\"production\"",
+     ...
+     ```
+  1. Run `npm run build` again. Verify your code should works in IE now.
+
+<hr >
+
+## :pencil: Do It: install Babel and integrate it with your project
+
+1. Configure Babel as described above.
+1. Run `npm run build` and verify that the application works in IE.
+
+<hr >
+
 [webpack]: https://webpack.js.org/
 [commonjs]: https://flaviocopes.com/commonjs/
 [ecma-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
@@ -130,3 +192,4 @@ Note that webpack is much more powerful than I've described above. The following
 [webpack-devserver]: https://webpack.js.org/configuration/dev-server/
 [style-loader]: https://webpack.js.org/loaders/style-loader/
 [css-loader]: https://webpack.js.org/loaders/css-loader/
+[babel]: https://babeljs.io/
