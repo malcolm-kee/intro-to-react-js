@@ -7,7 +7,7 @@ path: '/react-tooling-part1'
 
 Now we will deep dive into tooling around tooling around React and modern frontend development in general.
 
-## NodeJS
+## [NodeJS]
 
 ![Node JS logo](node-js.png)
 
@@ -16,7 +16,7 @@ Now we will deep dive into tooling around tooling around React and modern fronte
 - NodeJS is a Javascript runtime. It enables you to run javascript outside browser, in your laptop and server.
 - React does not need NodeJS (which I have demonstrated in previous section). However, NodeJS is important because it is the environment that enables the tooling that React depends heavily e.g. package management, bundling, transpiling, formating, and linting.
 
-## npm
+## [npm]
 
 ![npm logo](npm.png)
 
@@ -30,7 +30,7 @@ In order to start an npm project, run `npm init` at the root of your project fol
 
 <hr >
 
-## Do It: Create your project
+## :pencil: Do It: Create your project
 
 1. create a new folder and call it `intro-to-react`
 1. open the `intro-to-react` folder
@@ -46,7 +46,7 @@ In order to start an npm project, run `npm init` at the root of your project fol
 
 <hr >
 
-## prettier
+## [prettier]
 
 ![prettier banner](prettier-banner-dark.png)
 
@@ -83,14 +83,14 @@ Now you can invoke prettier by running `npm run format`.
 
 <hr >
 
-## Do It: add and configure prettier in your project
+## :pencil: Do It: add and configure prettier in your project
 
 1. Install prettier and configure format script based on the instruction above.
 1. (Optional) Configure prettier plugin if you're using VS code.
 
 <hr >
 
-## ESLint
+## [ESLint]
 
 ![ESLint logo](eslint-logo.png)
 
@@ -125,9 +125,14 @@ Now you can invoke prettier by running `npm run format`.
 
 <hr >
 
-## Do It: add and configure ESLint in your project
+## :pencil: Do It: add and configure ESLint in your project
 
 1. Install ESLint and configure lint script based on the instruction above.
 1. (Optional) Configure ESLint plugin if you're using VS code.
 
 <hr >
+
+[nodejs]: https://nodejs.org/en/
+[npm]: https://www.npmjs.com/
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
