@@ -1,11 +1,11 @@
 ---
-title: React Tooling
-path: '/react-tooling'
+title: React Tooling Part 1
+path: '/react-tooling-part1'
 ---
 
-# React Tooling
+# React Tooling Part 1
 
-Now we will dive deep into tooling around tooling around React and modern frontend development in general.
+Now we will deep dive into tooling around tooling around React and modern frontend development in general.
 
 ## NodeJS
 
@@ -20,9 +20,9 @@ Now we will dive deep into tooling around tooling around React and modern fronte
 
 ![npm logo](npm.png)
 
-- npm is the package manager for NodeJS. It is prepackaged together with NodeJS so you usually download them together.
-- It hosts packages for NodeJS and all the packages for front-end. npm has a command-line tool, called `npm` as well.
-- `npm` allows you to install code from npm registry which are the open-source projects that you can use in your project. When you run `npm install react`, it will download the latest version of React in npm registry to your project.
+- npm is the package manager for NodeJS.
+- It hosts packages for NodeJS and all the packages for front-end. npm has a command-line tool, called `npm` as well. The command-line tool is prepackaged together with NodeJS so you usually download them together.
+- `npm` allows you to install code from npm registry which are the open-source projects that you can use in your project. When you run `npm install react`, it will download the latest version of React in npm registry to your project. (Don't do this yet)
 
 In order to start an npm project, run `npm init` at the root of your project folder. It will ask you a few questions. If you don't know the answer or don't care, just hit Enter, you can always update it later by editing `package.json` file.
 
@@ -62,6 +62,12 @@ It can be painful to remember CLI commands to run for your project. npm allows y
 Let's configure npm scripts for the prettier formatting above:
 
 1. Install prettier in your project by running `npm install -D prettier`. The `-D` flag implies prettier will be installed as `devDependencies`.
+1. Let's customize prettier by adding a `.prettierrc` file with the following content:
+   ```json
+   {
+     "singleQuote": true
+   }
+   ```
 1. Add the `format` script in your `package.json`:
    ```js
    {
@@ -90,4 +96,38 @@ Now you can invoke prettier by running `npm run format`.
 
 - ESLint is a linter that enforce some code styles that more to usage than to code styles, e.g. never use `with` or never has unused parameters in your function.
 - To use ESLint in your project:
-  1. run `npm install -D eslint`
+  1. run `npm install -D eslint eslint-config-prettier`
+  1. create a file and call it `.eslintrc` with the following content:
+     ```json
+     {
+       "extends": ["eslint:recommended", "prettier", "prettier/react"],
+       "plugins": [],
+       "parserOptions": {
+         "ecmaVersion": 2016,
+         "sourceType": "module",
+         "ecmaFeatures": {
+           "jsx": true
+         }
+       },
+       "env": {
+         "es6": true,
+         "browser": true,
+         "node": true
+       }
+     }
+     ```
+  1. Add the following to npm scripts:
+  ```json
+  "lint": "eslint **/*.{js,jsx} --quiet"
+  ```
+- Now when you run `npm run lint`, eslint will output some error messages. For now just ignore the error, we will fix it later.
+- Similar to prettier, ESLint is great integration with VS Code as well. Download this [extensions](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+<hr >
+
+## Do It: add and configure ESLint in your project
+
+1. Install ESLint and configure lint script based on the instruction above.
+1. (Optional) Configure ESLint plugin if you're using VS code.
+
+<hr >

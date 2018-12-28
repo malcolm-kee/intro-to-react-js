@@ -31,8 +31,8 @@ To avoid the workshop time being spent on downloading and installing tools, make
 - [Tooling around React](react-tooling/react-tooling.md) (1.5 hours) 10.35 - 12.00
   - NodeJS & npm
   - prettier
-  - webpack & babel
   - eslint
+  - webpack & babel
   - React devtools
 - React core (1.5 hours) 13.00 - 14.30
   - JSX
