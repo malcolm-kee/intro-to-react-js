@@ -94,8 +94,8 @@ Ran all test suites.
 
 Congratulations! You just written your first test.
 
-- By default, jest will look for any files that is inside folder `__test__` or file name end with `.test.js` or `spec.js`. Therefore by naming the file as `lib.test.js`, the file will be treated as test file that jest need to run. I recommend to place the test file next to the code that it's testing with the naming convention `<code-under-test>.test.js`, so that it's clear on the purpose of the test, and what code has test associated with it.
-- When jest run the test file, it will injects few variables globally, e.g. `test` and `expect`.
+- By default, Jest will look for any files that is inside folder `__test__` or file name end with `.test.js` or `spec.js`. Therefore by naming the file as `lib.test.js`, the file will be treated as test file that Jest need to run. I recommend to place the test file next to the code that it's testing with the naming convention `<code-under-test>.test.js`, so that it's clear on the purpose of the test, and what code has test associated with it.
+- When Jest run the test file, it will injects few variables globally, e.g. `test` and `expect`.
 - `test` is used to wrap your unit test and give it a name. When your test fails, the test name will be displayed in the console.
 - `expect` is used to assert the result of your test. Common usages are:
 
@@ -137,7 +137,7 @@ Now the error should be gone now.
 
 It's common that you may want to keep Jest in watch mode while writing tests, so any change of the test will trigger a re-run and ensure the test is passed.
 
-To run jest in watch mode:
+To run Jest in watch mode:
 
 1. add a new npm script: `"test:watch": "jest --watch"`
 1. run `npm run test:watch`
