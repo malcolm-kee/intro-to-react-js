@@ -99,12 +99,18 @@ Congratulations! You just written your first test.
 - `test` is used to wrap your unit test and give it a name. When your test fails, the test name will be displayed in the console.
 - `expect` is used to assert the result of your test. Common usages are:
 
-  - `expect(result).toBe(expected)` (use `===` for equality check)
-  - `expect(result).toEqual(expected)` (recursively check for equality for object and array, this is useful when you don't care the identity of the variable but the value of it)
-  - `expect(result).toBeDefined()` (equivalent to `expect(result).not.toBe(undefined)`)
-  - each of the assertion above can be prefix with `.not` to invert the assertion, e.g. `expect(result).not.toBeDefined()`, `expect(result).not.toBe(expected)`.
+  ```js
+  expect(result).toBe(expected); // use ==== for equality check
+  expect(result).toEqual(expected); // recursively check for value equality, this is useful when you want to verify the value but not the identity
 
-    Read through the [Jest expect docs][jest-expect] to get an idea of the supported assertions.
+  // you can prefix with .not to invert the assertion
+  expect(result).not.toBe(unexpected);
+
+  // some common checking is included for your convenience
+  expect(result).toBeDefined(); // equivalent to expect(result).not.toBe(undefined);
+  ```
+
+  Read through the [Jest expect docs][jest-expect] to get an idea of the supported assertions.
 
 ## Additional Configurations of Jest
 
@@ -201,7 +207,7 @@ describe('BusyContainer', () => {
   });
 
   it('renders loading indicator when props is loading', () => {
-    // Thanks to JSDOM (included part of jest, we have access to browser object like document)
+    // Thanks to JSDOM (included part of Jest), we have access to browser object like document
     const div = document.createElement('div');
     document.body.appendChild(div);
 
@@ -300,7 +306,7 @@ describe('BusyContainer', () => {
 
 - `cleanup` will perform the cleanup step of unmount component and remove container that we did manually previously.
 - `render` will create a container and mount our component in the container, as we did manually previously.
-- `render` will also returns a few helpers for us to query the DOM. In our case, we use `getByTestId` and `queryByTestId`, which is `querySelector('[data-testid="${testId}"]')` (the difference between the two is `getByTestId` will throws error if no result returns while `queryByTestId` will not throw error and returns `null`). For a full list of supported queries, refer to the [`react-testing-library` Queries docs][react-testing-library-queries].
+- `render` will also returns a few helpers for us to query the DOM. In our case, we use `getByTestId` and `queryByTestId`, which is just a wrapper over `querySelector` (the difference between the two is `getByTestId` will throws error if no result returns while `queryByTestId` will not throw error and returns `null`). For a full list of supported queries, refer to the [`react-testing-library` Queries docs][react-testing-library-queries].
 
 <hr >
 
