@@ -13,8 +13,9 @@ Now we will deep dive into tooling around tooling around React and modern fronte
 
 [Download Page](https://nodejs.org/en/download/)
 
-- NodeJS is a Javascript runtime. It enables you to run javascript outside browser, in your laptop and server.
-- React does not need NodeJS (which I have demonstrated in previous section). However, NodeJS is important because it is the environment that enables the tooling that React depends heavily e.g. package management, bundling, transpiling, formating, and linting.
+NodeJS is a Javascript runtime. It enables you to run javascript outside browser, in your laptop and server. NodeJS is the main reason that makes Javascript so popular today, as it makes Javascript the single programming language that can supports from the frontend UI to the backend services like web server and database.
+
+Technically, React does not need NodeJS (which I have demonstrated in previous section). However, NodeJS is important to React because it is the environment that enables the tooling that React depends heavily e.g. package management, bundling, transpiling, formating, and linting.
 
 ## [npm]
 
@@ -23,6 +24,8 @@ Now we will deep dive into tooling around tooling around React and modern fronte
 - npm is the package manager for NodeJS.
 - It hosts packages for NodeJS and all the packages for front-end. npm has a command-line tool, called `npm` as well. The command-line tool is prepackaged together with NodeJS so you usually download them together.
 - `npm` allows you to install code from npm registry which are the open-source projects that you can use in your project. When you run `npm install react`, it will download the latest version of React in npm registry to your project. (Don't do this yet)
+
+### Creating a project with npm
 
 In order to start an npm project, run `npm init` at the root of your project folder. It will ask you a few questions. If you don't know the answer or don't care, just hit Enter, you can always update it later by editing `package.json` file.
 
@@ -50,10 +53,11 @@ In order to start an npm project, run `npm init` at the root of your project fol
 
 ![prettier banner](prettier-banner-dark.png)
 
-- Prettier is an opinionated code formatter that removes worries about the style of your code.
-- It will takes your code and reformat it based on predefined styles. Since you no longer has control of the style of your code, your code is always consistent, as is the code from the rest of your team.
-- To use prettier to format your code, run the following command `npx prettier --write script.js`. Prettier will format code of `script.js`. Try to modify `script.js` and make it look ugly and run `npx prettier --write script.js` again - prettier will make the code back to its format.
-- Prettier is great to use with VS code, download this [extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+Prettier is an opinionated code formatter that removes worries about the style of your code. It will takes your code and reformat it based on predefined styles. Since you no longer has control of the style of your code, your code is always consistent, as is the code from the rest of your team.
+
+To use prettier to format your code, run the following command `npx prettier --write script.js`. Prettier will format code of `script.js`. Try to modify `script.js` and make it look ugly and run `npx prettier --write script.js` again - prettier will make the code back to its format.
+
+Prettier is great to use with VS code, download this [extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
 ## npm scripts
 
