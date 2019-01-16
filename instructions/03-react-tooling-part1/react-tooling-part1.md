@@ -35,10 +35,10 @@ In order to start an npm project, run `npm init` at the root of your project fol
 
 ## :pencil: Do It: Create your project
 
-1. create a new folder and call it `intro-to-react`
-1. open the `intro-to-react` folder
-1. In your command line, enter `npm init` and answer the questions. A file with name `package.json` should be generated in the folder. You can open it to check it - it is a JSON file that captures what you've answered, thus you can edit this file as you wish.
-1. move the `index.html` file into the `intro-to-react` folder
+1. create a new folder and call it `react-movie-app`
+1. open the `react-movie-app` folder
+1. In your command line, enter `npm init` and answer the questions. A file with name `package.json` should be generated in the folder. You can open it with your editor - it is a JSON file that captures what you've answered, thus you can edit this file as you wish.
+1. move the `index.html` file into the `react-movie-app` folder
 1. create a file alongside the html file and call it `script.js`
 1. cut and paste our code within `script` tag into `script.js`
 1. remove the `script` tag in our html file and replace it with
@@ -75,7 +75,7 @@ Let's configure npm scripts for the prettier formatting above:
 1. Add the `format` script in your `package.json`:
    ```js
    {
-       "name": "intro-to-react",
+       "name": "react-movie-app",
        ...
        "scripts": {
            "format": "prettier --write script.js"
