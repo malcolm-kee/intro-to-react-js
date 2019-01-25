@@ -41,6 +41,8 @@ Now when you load your app, you should be see your movie is added.
 
 ### Add Ajax Call Function to Make the POST Request
 
+Now that we know the actual AJAX call works by using tools, let's proceed to do that with our code.
+
 Create a `createMovie` function in `api.js` that will make the request
 
 ```js
@@ -50,11 +52,97 @@ export const createMovie = movie =>
     .then(res => res.data);
 ```
 
+- axios allows you to makes API call with specific method, e.g. `get`, `post`, `put` etc., corresponding to our REST call methods.
+- the second parameter of `axios.post` is the body of the data that you want to submit.
+
 ### Create Form Component
 
-Let's add a file `movie-form.js`:
+Now that we have function to make the API call, let's create the form component.
+
+Add a file `movie-form.js` with the following content:
 
 ```jsx
+import React from 'react';
+import { createMovie } from './api';
+
+class MovieForm extends React.Component {
+  state = {
+    name: '',
+    releaseDate: ''
+  };
+
+  handleInputChange = ev => {
+    const { name, value } = ev.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSubmit = ev => {
+    ev.preventDefault();
+    createMovie(this.state);
+  };
+
+  render() {
+    return (
+      <div className="movie-form">
+        <form onSubmit={this.handleSubmit}>
+          <legend>Create Movie</legend>
+          <div className="field">
+            <label htmlFor="name" className="label">
+              Name
+            </label>
+            <input
+              className="input"
+              value={this.state.name}
+              id="name"
+              name="name"
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="releaseDate" className="label">
+              Release Date
+            </label>
+            <input
+              className="input"
+              value={this.state.releaseDate}
+              id="releaseDate"
+              name="releaseDate"
+              type="date"
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+          <div className="button-container">
+            <button type="submit" className="submit-button">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default MovieForm;
 ```
+
+- we initialize the state with the values for the form.
+- we define a `handleInputChange` method, which will be passed to `onChange` props of the input element.
+  - This method will extract the `value` and the `name` of the input when you make any change to the input value. We use the name and the value to `setState`.
+  - Take note of the `[name]`, which means `name` should be evaluated to its value. Without the `[]`, the setState call will always the value of `name` instead of depending on the `name` properties of the input.
+- we define a `handleSubmit` method, which will be passed to `onSubmit` props of the form element. When form is submitted, we will call `createForm` with the state. We call `event.preventDefault` because by default form submission will cause a page refresh, and we doesn't want that.
+
+Now try to use the form, you can see the page is making the AJAX call, and after you refresh the page, the new movie will be there!
+
+### Refresh Movie List after Submission
+
+To Be Continued
+
+### Error Handling for Form Submission
+
+To Be Continued
 
 [restlet-client]: https://chrome.google.com/webstore/detail/restlet-client-rest-api-t/aejoelaoggembcahagimdiliamlcdmfm?hl=en
