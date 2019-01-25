@@ -1,10 +1,10 @@
 ---
-title: Bonus - Form in React
+title: Appendix - Form in React
 path: '/form-in-react'
 description: 'Learn how to implements a simple form in React'
 ---
 
-# Bonus - Form in React
+# Appendix - Form in React
 
 This section will be covered if we have additional time during the workshop.
 
